@@ -1,6 +1,9 @@
 import React from 'react';
 import "./css/Login.css";
-
+import { LoginDTO } from './dto/Login.dto';
+import { useState } from "react";
+import { LoginService } from './services/Login.service';
+import { useNavigate } from "react-router-dom";
 
 
 export const showSignin = () => {
@@ -54,6 +57,30 @@ export const showThankYou = () => {
 }
 
 export default function Login() {
+
+    const [connect, setConnect] = useState<LoginDTO>();
+    const [status, setStatus] = useState<boolean>(false);
+    const navigate = useNavigate();
+  
+    async function handlelogin(email: any) {
+      const result = await LoginService.getInstance().email(email);
+      setConnect(result);
+      console.log(result);
+      setStatus(true);
+      navigate("/user", { state: { email: email } });
+    }
+
+    const handleSubmit = (event: any) => {
+        event.preventDefault();
+        
+        const formData = new FormData(event.target);
+        const email = formData.get("email");
+        const password = formData.get("password");
+      
+        handlelogin({ email, password });
+    };
+      
+
   return (
     <div className="Login">
       <header className="Login-header">
@@ -85,17 +112,17 @@ export default function Login() {
             <div className="face face-front">
               <div className="content">
                 <h2>Connexion</h2>
-                <form onSubmit={(event) => event.preventDefault()}>
+                <form onSubmit={handleSubmit}>
                   <div className="field-wrapper">
-                    <input type="text" name="username" placeholder="nom d'utilisateur"/>
-                    <label>nom d'utilisateur</label>
+                    <input type="text" name="email" placeholder="nom d'utilisateur"/>
+                    <label>E-mail</label>
                   </div>
                   <div className="field-wrapper">
                     <input type="password" name="password" placeholder="mot de passe" autoComplete="new-password"/>
                     <label>mot de passe</label>
                   </div>
                   <div className="field-wrapper">
-                    <input type="submit" onClick={showThankYou}/>
+                    <input type="submit"/>
                   </div>
                   <span className="psw" onClick={showForgotPassword}>Mot de passe oublié ? </span>
                   <span className="signup" onClick={showSignup}>Pas encore de compte ? Inscrivez-vous</span>
