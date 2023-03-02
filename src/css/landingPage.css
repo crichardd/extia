@@ -1,0 +1,43 @@
+.button_Inscription:hover {
+    border: none;
+    background-color: #FC8855;
+    color: #ffffff;
+    transition: 0.7s;
+}
+
+.mission_tag:hover {
+    border: none;
+    background-color: #AEAEAE;
+    color: #ffffff;
+    transition: 0.7s;
+}
+
+.color_text {
+    color: #3A4248;
+}
+
+.component-mission {
+    height: 100px;
+    width: 300px;
+    margin-left: 53px;
+    margin-bottom: 10px;
+    background-color: #F6F6F6;
+}
+
+.react-calendar {
+    background: #F6F6F6 !important;
+}
+
+.react-calendar__tile--now,
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+    background: #FC8855 !important;
+}
+
+.react-calendar__tile--active,
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+    background: #FC8855 !important;
+    opacity: 0.5;
+    color: #3A4248;
+}
