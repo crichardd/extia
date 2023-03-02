@@ -4,53 +4,47 @@ import { LoginDTO } from './dto/Login.dto';
 import { useState } from "react";
 import { LoginService } from './services/Login.service';
 import { useNavigate } from "react-router-dom";
+import { InscriptionDTO } from './dto/Add.dto';
+import { InscriptionService } from './services/Inscription.service';
 
 
 export const showSignin = () => {
-    const prism = document.querySelector(".rec-prism") as HTMLElement;
-
+  const prism = document.querySelector(".rec-prism") as HTMLElement;
   if (prism) {
       prism.style.transform = "translateZ(-100px)";
   }
 }
   
 export const showSignup = () => {
-    const prism = document.querySelector(".rec-prism") as HTMLElement;
-
-
+  const prism = document.querySelector(".rec-prism") as HTMLElement;
   if (prism) {
     prism.style.transform = "translateZ(-100px) rotateY( -90deg)";
   }
 }
 
 export const showForgotPassword = () => {
-
-    const prism = document.querySelector(".rec-prism") as HTMLElement;
-
+  const prism = document.querySelector(".rec-prism") as HTMLElement;
   if (prism) {
     prism.style.transform = "translateZ(-100px) rotateY( -180deg)";
   }
 }
 
 export const showSubscribe = () => {
-    const prism = document.querySelector(".rec-prism") as HTMLElement;
-
+  const prism = document.querySelector(".rec-prism") as HTMLElement;
   if (prism) {
     prism.style.transform = "translateZ(-100px) rotateX( -90deg)";
   }
 }
 
 export const showContactUs = () => {
-    const prism = document.querySelector(".rec-prism") as HTMLElement;
-
+  const prism = document.querySelector(".rec-prism") as HTMLElement;
   if (prism) {
     prism.style.transform = "translateZ(-100px) rotateY( 90deg)";
   }
 }
 
 export const showThankYou = () => {
-    const prism = document.querySelector(".rec-prism") as HTMLElement;
-
+  const prism = document.querySelector(".rec-prism") as HTMLElement;
   if (prism) {
     prism.style.transform = "translateZ(-100px) rotateX( 90deg)";
   }
@@ -65,7 +59,7 @@ export default function Login() {
     async function handlelogin(email: any) {
       const result = await LoginService.getInstance().email(email);
       setConnect(result);
-      console.log(result);
+      
       setStatus(true);
       navigate("/user", { state: { email: email } });
     }
@@ -79,7 +73,27 @@ export default function Login() {
       
         handlelogin({ email, password });
     };
-      
+
+    const [inscription, setInscription] = useState<InscriptionDTO>();
+  
+    async function handleInscription(inscription: any) {
+      const result = await InscriptionService.getInstance().inscription(
+        inscription
+      );
+      setInscription(result);
+      navigate("/user", { state: { email: inscription.email } });
+    }
+
+    const handleSubmitInscription = (event: any) => {
+      event.preventDefault();
+
+      const email = event.target.email.value;
+      const name = event.target.name.value;
+      const firstname = event.target.firstname.value;
+      const password = event.target.elements.password.value;
+  
+      handleInscription({ email, name, firstname, password });
+    };
 
   return (
     <div className="Login">
@@ -147,10 +161,18 @@ export default function Login() {
             <div className="face face-right">
               <div className="content">
                 <h2>Inscription</h2>
-                <form onSubmit={(event) => event.preventDefault()}>
+                <form onSubmit={handleSubmitInscription}>
                   <div className="field-wrapper">
                     <input type="text" name="email" placeholder="email"/>
                     <label>E-mail</label>
+                  </div>
+                  <div className="field-wrapper">
+                    <input type="text" name="name" placeholder="name"/>
+                    <label>Nom</label>
+                  </div>
+                  <div className="field-wrapper">
+                    <input type="text" name="firstname" placeholder="firstname"/>
+                    <label>Prénom</label>
                   </div>
                   <div className="field-wrapper">
                     <input type="password" name="password" placeholder="password" autoComplete="new-password"/>
@@ -161,7 +183,7 @@ export default function Login() {
                     <label>Entrer à nouveau votre mot de passe</label>
                   </div>
                   <div className="field-wrapper">
-                    <input type="submit" onClick={showThankYou}/>
+                    <input type="submit"/>
                   </div>
                   <span className="singin" onClick={showSignin}>Déjà utilisateur ? Connexion</span>
                 </form>
