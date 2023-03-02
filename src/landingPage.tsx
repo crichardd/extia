@@ -4,8 +4,39 @@ import MeetupCard from "./composants/futurMeetup";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import "./css/landingPage.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Mission } from "./services/Mission.interface";
 
-function landingPage() {
+function LandingPage() {
+    //const [missions, setMissions] = useState<any[]>([]);
+    const [data, setData] = useState<any[]>([]);
+
+    const fetchData = () => {
+        axios
+        .get('http://63.33.61.128:3000/api/mission/all')
+        .then((response) => {
+            console.log(response)
+            setData(response.data)
+        })
+        .catch((error)=> {
+            console.log(error)
+        })
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    /*
+    useEffect(() => {
+        axios.get('http://63.33.61.128:3000/api/mission/all')
+            .then(response => setMissions(response.data))
+            .catch(error => console.error(error));
+    }, []);
+    */
+
+
     return (
         <div className="landingPage">
             <header className="landingPage-header">
@@ -25,13 +56,11 @@ function landingPage() {
                 </section>
                 <section>
                     <p className="color_text" style={{ fontSize: 30, marginLeft: '40px' }}>Vos prochaines <span style={{ color: '#FC8855' }}>missions</span></p>
-                    <div style={{ display: "flex", flexWrap: 'wrap' }}>
-                        <MissionCard name="Traduction site en français" company="Foxart" tag="Content Manager" city="Paris" date="20/08/2022" />
-                        <MissionCard name="Traduction site en espagnol" company="Foxart" tag="Content Manager" city="Lyon" date="20/08/2022" />
-                    </div>
-                    {/*{icons.map(function(icon, i) {
-                        return <Icon href={icon.href} src={icon.src} classname={icon.classname} alt={icon.alt} key={i}/>;
-                    })}*/}
+                    {data.map(item =>
+                        <div style={{ display: "flex", flexWrap: 'wrap' }}>
+                            <MissionCard name={item.title} company={item.company.name} tag="Content Manager" city={item.company.address} date={item.startDate.toLocaleDateString()} />
+                        </div>
+                    )}
                 </section>
                 <p className="color_text" style={{ fontSize: 30, marginLeft: '40px' }}>Les futures <span style={{ color: '#FC8855' }}>COMETE</span></p>
                 <section style={{ width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: "center" }}>
@@ -52,10 +81,10 @@ function landingPage() {
                     </div>
                 </section>
                 <p className="color_text" style={{ fontSize: 30, marginLeft: 40 }}>Les futurs <span style={{ color: '#FC8855' }}>events</span></p>
-                <section style={{ width: '100%', display: "flex", flexDirection: 'row', flexWrap: "nowrap", justifyContent: "center"}}>
-                    <div style={{ display: "flex", flexWrap: 'wrap',  width: '70%'}}>
-                        <EventCard name="Job dating #203" date="Mardi 16 mars 2023 - 16h39" lieu="Extia - salle 118"/>
-                        <EventCard name="Job dating #204" date="Mardi 16 mars 2023 - 16h39" lieu="Extia - salle 118"/>
+                <section style={{ width: '100%', display: "flex", flexDirection: 'row', flexWrap: "nowrap", justifyContent: "center" }}>
+                    <div style={{ display: "flex", flexWrap: 'wrap', width: '70%' }}>
+                        <EventCard name="Job dating #203" date="Mardi 16 mars 2023 - 16h39" lieu="Extia - salle 118" />
+                        <EventCard name="Job dating #204" date="Mardi 16 mars 2023 - 16h39" lieu="Extia - salle 118" />
                     </div>
                     <div>
                         <Calendar />
@@ -66,4 +95,4 @@ function landingPage() {
     );
 }
 
-export default landingPage;
+export default LandingPage;
