@@ -12,7 +12,7 @@ export const showLogin = React.memo(() => {
 
 export const showForgotPassword = React.memo(() => {
   prism.style.transform = "translateZ(-100px) rotateY( -180deg)";
-});
+}); 
 
 export const showSubscribe = React.memo(() => {
   prism.style.transform = "translateZ(-100px) rotateX( -90deg)";
