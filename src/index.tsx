@@ -8,6 +8,11 @@ import LandingPage from './landingPage';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import Advices from './advices';
+import CompanyList from './componnents/Company/Company';
+import AdviceList from './componnents/AdviceDetail/AdviceDetail';
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -21,6 +26,9 @@ root.render(
         <Route path="/user" element={<User />}></Route>
         <Route path='/landingpage' element={<LandingPage/>}></Route>
         <Route path="/user" element={<User />}></Route>
+        <Route path="/advices" element={<Advices />}></Route>
+        <Route path="/company" element={<CompanyList />}></Route>
+        <Route path="/advicesList" element={<AdviceList />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
