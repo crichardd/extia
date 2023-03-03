@@ -50,7 +50,7 @@ function LandingPage() {
                 <section style={{ width: '100%', display: "flex", flexDirection: 'row', flexWrap: "wrap", justifyContent: "center", paddingBottom: 20 }}>
                         <EventList/>
                     <div>
-                       
+                        
                     </div>
                 </section>
             </body>
