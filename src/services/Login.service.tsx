@@ -15,7 +15,7 @@ export class LoginService {
 
   async email(email: any): Promise<LoginDTO | undefined> {
     const response = await axios.post(
-      "https://63.33.61.128:3000/api/auth/login",
+      "https://b352-94-228-190-38.eu.ngrok.io/api/auth/login",
       email
     );
     console.log(response);
