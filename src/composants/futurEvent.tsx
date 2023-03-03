@@ -18,7 +18,7 @@ const EventCard = ({ tag, date, address }: EventData) => {
             <p className="color_text" style={{ marginLeft: 13, width: 332 }}>
                 <span className="color_text" style={{ top: '10', fontWeight: 'bold' }}>{tag}</span> <br />
                 {date} <br />
-                {address.house} {address.street} {address.city}</p>
+                {address?.house} {address?.street} {address?.city}</p>
         </div>
     );
 };

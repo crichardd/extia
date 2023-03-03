@@ -4,6 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 import "./css/landingPage.css";
 import MissionList from "./composants/futurJob";
 import EventList from "./composants/futurEvent";
+import Footer from "./composants/Footer";
 
 function LandingPage() {
         /*
@@ -80,6 +81,7 @@ function LandingPage() {
                         <Calendar />
                     </div>
                 </section>
+                <Footer/>
             </body>
         </div>
     );
