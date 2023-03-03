@@ -14,7 +14,7 @@ const CompanyList : React.FC = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('https://b352-94-228-190-38.eu.ngrok.io/api/company/all');
+            const response = await fetch('http://63.33.61.128:3000/api/company/all');
             const data = await response.json();
             setCompanies(data);
         };

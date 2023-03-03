@@ -15,7 +15,7 @@ export class InscriptionService {
 
   async inscription(inscription: any): Promise<InscriptionDTO | undefined> {
     const email = await axios.post(
-      "https://b352-94-228-190-38.eu.ngrok.io/api/auth/signup",
+      "http://63.33.61.128:3000/api/auth/signup",
       inscription
     );
 
