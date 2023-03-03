@@ -7,7 +7,7 @@
     gap: 5%;
 }
 
-.compagnies-container{
+.companies-container{
     width: 40%;
     background-color: #3A4248;
     border-radius: 0 100px 0 0;
@@ -16,46 +16,6 @@
 .advices-container{
     width: 60%;
     padding-left: 5%;
-}
-
-.compagnies-grid{
-    padding-top: 50px;
-    padding-left: 10px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.compagny-card{
-    width: 125px;
-    height: 125px;
-    background-color: #F6F6F6;
-    border-radius: 5px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    margin-bottom: 32px;
-    line-height: 1;
-
-
-}
-
-.compagny-icon{
-    width: 37px;
-    height: 37px;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto;
-    background-color: #42509e;
-
-}
-.compagny-name {
-    text-align: center;
-
-}
-
-.compagny-note{
-    text-align: right;
-    padding-right: 8px;
-
 }
 
 .advice-card {
@@ -68,7 +28,7 @@
     text-align: justify;
 }
 
-.advice-header-container {
+.advice-card-header {
     display:flex;
     flex-wrap: nowrap;
     flex-direction: row;

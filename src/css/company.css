@@ -1,0 +1,34 @@
+.companies-grid{
+    padding-top: 50px;
+    padding-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.company-card{
+    width: 125px;
+    height: 125px;
+    background-color: #F6F6F6;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-bottom: 32px;
+    line-height: 1;
+}
+
+.company-card-header{
+    text-align: center;
+}
+
+.company-icon{
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.company-card-footer {
+    display: flex;
+    justify-content: space-between;
+}
