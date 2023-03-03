@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Login from './Login';
 import User from './User';
+import LandingPage from './landingPage';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -17,6 +18,8 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}></Route>
         <Route path="/connect" element={<Login />}></Route>
+        <Route path="/user" element={<User />}></Route>
+        <Route path='/landingpage' element={<LandingPage/>}></Route>
         <Route path="/user" element={<User />}></Route>
       </Routes>
     </BrowserRouter>
