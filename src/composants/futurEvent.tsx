@@ -17,8 +17,8 @@ const EventCard = ({ tag, date, address }: EventData) => {
         <div style={{  marginLeft: -25,marginBottom: 5, marginRight: 32, height: 102, width: 419, backgroundColor: '#F6F6F6' }}>
             <p className="color_text" style={{ marginLeft: 13, width: 332 }}>
                 <span className="color_text" style={{ top: '10', fontWeight: 'bold' }}>{tag}</span> <br />
-                {date} <br />
-                {address.house} {address.street} {address.city}</p>
+                {date?.substring(0, 10).split("-").reverse().join("-")} <br />
+                {address?.house} {address?.street} {address?.city}</p>
         </div>
     );
 };
@@ -29,8 +29,14 @@ const EventList: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch('http://63.33.61.128:3000/api/event/all');
-            const data = await response.json();
-            setEvents(data);
+            const fullData = await response.json();
+            if (fullData.length > 7) {
+                const data = fullData.slice(0, 6)
+                setEvents(data);
+            } else {
+                const data = fullData.slice(0, fullData.length)
+                setEvents(data);
+            }
         };
         fetchData();
     }, []);
