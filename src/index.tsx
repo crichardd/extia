@@ -4,13 +4,14 @@ import './index.css';
 import App from './App';
 import LandingPage from './landingPage';
 import reportWebVitals from './reportWebVitals';
+import MissionPageAccueil from './missionPageAccueil';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    {LandingPage()}
+    {MissionPageAccueil()}
   </React.StrictMode>
 );
 
