@@ -1,11 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
 import './index.css';
+
+import './fonts/GothamRoundedBook.ttf';
+import './fonts/GothamRoundedBold.ttf';
+import './fonts/GothamRoundedMedium.ttf';
+import './fonts/Oswald-VariableFont_wght.ttf';
+
 import App from './App';
 import Login from './Login';
 import User from './User';
 import LandingPage from './landingPage';
 import reportWebVitals from './reportWebVitals';
+import Meetup from "./meetupDara";
+import SupportComet from './support'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Advices from './advices';
@@ -19,18 +28,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}></Route>
-        <Route path="/connect" element={<Login />}></Route>
-        <Route path="/user" element={<User />}></Route>
-        <Route path='/landingpage' element={<LandingPage/>}></Route>
-        <Route path="/user" element={<User />}></Route>
-        <Route path="/advices" element={<Advices />}></Route>
-        <Route path="/company" element={<CompanyList />}></Route>
-        <Route path="/advicesList" element={<AdviceList />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
 );
 

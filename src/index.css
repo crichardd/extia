@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "GothamRounded";
+  src: url("./fonts/GothamRoundedBook.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "GothamRounded";
+  src: url("./fonts/GothamRoundedBold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "GothamRounded";
+  src: url("./fonts/GothamRoundedMedium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Oswald";
+  src: local("Oswald"),url("./fonts/Oswald-VariableFont_wght.ttf") format("truetype");
+}
