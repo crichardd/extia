@@ -5,7 +5,7 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 //import '';
 
-interface MissionData {
+interface MeetupDara {
     title: String;
     date: Date;
     tag: String
@@ -23,19 +23,29 @@ interface Adresse {
 
 const Meetup : React.FC = () => {
 
-    const [meetupnext, setMeetupNext] = useState<MissionData[]>([]);    const [meetup, setMeetup] = useState<MissionData[]>([]);
-    const [meetuppast, setMeetupPast] = useState<MissionData[]>([]);
+    const [meetupnext, setMeetupNext] = useState<MeetupDara[]>([]);    const [meetup, setMeetup] = useState<MeetupDara[]>([]);
+    const [meetuppast, setMeetupPast] = useState<MeetupDara[]>([]);
 
 
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch('http://63.33.61.128:3000/api/meet/all');
             const data = await response.json();
+            data.sort((before: MeetupDara, after: MeetupDara) => (new Date(before.date) < new Date(before.date)) ? 1 : (before.date > after.date) ? -1 : 0);
             /*Get futures meet*/
-            //data.sort(Date.parse(data.date))
-            let lenght = data.length;
-            setMeetupPast(data.slice(0, lenght/2))
-            setMeetupNext(data.slice(lenght/2, lenght));
+            let currentDate : Date = new Date
+            var next : MeetupDara[] = [];
+            var past : MeetupDara[] = [];
+            data.map((meet: MeetupDara,i: Number) => {
+                if (new Date(meet.date) > currentDate) {
+                    next.push(meet)
+                    console.log(meet)
+                } else {
+                    past.push(meet)
+                }
+            })
+            setMeetupNext(data);
+            setMeetupPast(data)
             /*Get past meet*/
         };
         fetchData();

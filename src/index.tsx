@@ -11,7 +11,7 @@ import './fonts/Oswald-VariableFont_wght.ttf';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Meetup from "./meetup";
+import Meetup from "./meetupDara";
 import SupportComet from './support'
 
 const root = ReactDOM.createRoot(
