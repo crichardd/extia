@@ -8,8 +8,6 @@ const Navbar = () => {
 
     const handleMeetupClick = () => {
       setShowMeetup(true);
-    
-      Navigate("/comet");
     };
 
     return (
