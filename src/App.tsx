@@ -1,15 +1,15 @@
 import React from "react";
-import "./css/App.css";
-import LandingPage from "./landingPage";
+import AdviceList from "./componnents/AdviceDetail/AdviceDetail";
 import Login from "./Login";
 import "./Login.tsx"
+import Meetup from "./meetupDara";
 
 
 
 function App() {
   return (
     <div>
-      <LandingPage/>
+      <Login/>
     </div>
   );
 }

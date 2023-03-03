@@ -61,7 +61,7 @@ export default function Login() {
       setConnect(result);
       
       setStatus(true);
-      navigate("/user", { state: { email: email } });
+      navigate("/LandingPage");
     }
 
     const handleSubmit = (event: any) => {

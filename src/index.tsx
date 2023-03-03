@@ -28,7 +28,20 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}></Route>
+        <Route path="/connect" element={<Login />}></Route>
+        <Route path="/user" element={<User />}></Route>
+        <Route path='/landingpage' element={<LandingPage/>}></Route>
+        <Route path="/user" element={<User />}></Route>
+        <Route path="/advices" element={<Advices />}></Route>
+        <Route path="/company" element={<CompanyList />}></Route>
+        <Route path="/advicesList" element={<AdviceList />}></Route>
+        <Route path="/comet" element={<Meetup />}></Route>
+        <Route path="/support-comet" element={<SupportComet />}></Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

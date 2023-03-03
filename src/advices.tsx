@@ -7,7 +7,7 @@ import NavBar from "./componnents/Nav/NavBar";
 import CompanyList from "./componnents/Company/Company";
 import AdviceList from "./componnents/AdviceDetail/AdviceDetail";
 
-function advices(){
+function Advices(){
     return(
         <body>
             <NavBar/>
@@ -23,4 +23,4 @@ function advices(){
     );
 }
 
-export default advices;
+export default Advices;

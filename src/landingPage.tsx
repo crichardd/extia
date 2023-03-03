@@ -47,10 +47,10 @@ function LandingPage() {
                     </div>
                 </section>
                 <p className="color_text" style={{ fontSize: 30, marginLeft: 40 }}>Les futurs <span style={{ color: '#FC8855' }}>events</span></p>
-                <section style={{ width: '100%', display: "flex", flexDirection: 'row', flexWrap: "nowrap", justifyContent: "center", paddingBottom: 20}}>
+                <section style={{ width: '100%', display: "flex", flexDirection: 'row', flexWrap: "wrap", justifyContent: "center", paddingBottom: 20 }}>
                         <EventList/>
                     <div>
-                        <Calendar />
+                       
                     </div>
                 </section>
             </body>
