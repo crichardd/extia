@@ -99,7 +99,7 @@ export default function Login() {
     <div className="Login">
       <header className="Login-header">
       </header>
-      <body>
+      <body className='tmp'>
         <ul className="nav">
           <li onClick={showSignin}>Connexion</li>
           <li onClick={showSignup}>Inscription</li>
