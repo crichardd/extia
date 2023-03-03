@@ -1,14 +1,12 @@
-import EventCard from "./composants/futurEvent";
-import MissionCard from "./composants/futurJob";
 import MeetupCard from "./composants/futurMeetup";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import "./css/landingPage.css";
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Mission } from "./services/Mission.interface";
+import MissionList from "./composants/futurJob";
+import EventList from "./composants/futurEvent";
 
 function LandingPage() {
+        /*
     //const [missions, setMissions] = useState<any[]>([]);
     const [data, setData] = useState<any[]>([]);
 
@@ -28,7 +26,6 @@ function LandingPage() {
         fetchData()
     }, [])
 
-    /*
     useEffect(() => {
         axios.get('http://63.33.61.128:3000/api/mission/all')
             .then(response => setMissions(response.data))
@@ -56,11 +53,7 @@ function LandingPage() {
                 </section>
                 <section>
                     <p className="color_text" style={{ fontSize: 30, marginLeft: '40px' }}>Vos prochaines <span style={{ color: '#FC8855' }}>missions</span></p>
-                    {data.map(item =>
-                        <div style={{ display: "flex", flexWrap: 'wrap' }}>
-                            <MissionCard name={item.title} company={item.company.name} tag="Content Manager" city={item.company.address} date={item.startDate.toLocaleDateString()} />
-                        </div>
-                    )}
+                        <MissionList/>
                 </section>
                 <p className="color_text" style={{ fontSize: 30, marginLeft: '40px' }}>Les futures <span style={{ color: '#FC8855' }}>COMETE</span></p>
                 <section style={{ width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: "center" }}>
@@ -82,10 +75,7 @@ function LandingPage() {
                 </section>
                 <p className="color_text" style={{ fontSize: 30, marginLeft: 40 }}>Les futurs <span style={{ color: '#FC8855' }}>events</span></p>
                 <section style={{ width: '100%', display: "flex", flexDirection: 'row', flexWrap: "nowrap", justifyContent: "center" }}>
-                    <div style={{ display: "flex", flexWrap: 'wrap', width: '70%' }}>
-                        <EventCard name="Job dating #203" date="Mardi 16 mars 2023 - 16h39" lieu="Extia - salle 118" />
-                        <EventCard name="Job dating #204" date="Mardi 16 mars 2023 - 16h39" lieu="Extia - salle 118" />
-                    </div>
+                        <EventList/>
                     <div>
                         <Calendar />
                     </div>
