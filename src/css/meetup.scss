@@ -1,7 +1,9 @@
 html, body {
   background: var(--color-background);
 }
-
+.meetup-title {
+  font-family: var(--font-family-accent);
+}
 .m-titleMission {
   display: block;
   margin-left: 0;
@@ -22,6 +24,7 @@ html, body {
   }
   &__m-titleh2 {
     text-align: left;
+    margin-top: 50px;
     font-family: var(--font-family-accent);
     font-size: var(--font-size-L);
     color: var(--color-text);
@@ -83,7 +86,10 @@ html, body {
 
   &__m-articles {
     width: 100%;
-    margin-top: 8px;
+    margin-top: 24px;
+    overflow: scroll;
+    height: 700px;
+    direction:rtl;
   }
 
   &__m-comet {
@@ -94,6 +100,7 @@ html, body {
     text-align: left;
     font-family: var(--font-family-main);
     font-size: var(--font-size-S);
+    margin-bottom: 16px;
 
     &--a-textComet {
       font-family: var(--font-family-main);
@@ -104,6 +111,8 @@ html, body {
 
     &--a-icon {
       border: none;
+      background: none;
+      padding-left: 4px;
       &> img{
         width: 16px;
         height: 16px;
@@ -116,7 +125,7 @@ html, body {
     &--a-participants {
       display: flex;
       flex-wrap: nowrap;
-      flex-direction: row;
+      flex-direction: row-reverse;
       font-family: var(--font-family-main);
     }
 
@@ -124,15 +133,16 @@ html, body {
       padding-top: 10px;
       width: 100%;
       display: flex;
+      flex-direction: row-reverse;
       flex-wrap: nowrap;
       justify-content: space-between;
-      flex-direction: row;
     }
 
     &--m-containerName {
       display: flex;
       flex-wrap: nowrap;
       margin-top: 4px;
+      flex-direction: row-reverse;
       margin-bottom: 4px;
       width: 100%;
       & > *, & > * > * {
@@ -172,6 +182,19 @@ html, body {
       font-size: 14px;
     }
   }
+
+  &__m-sectionTwo {
+    padding-left: 140px;
+    width: 50%;
+  }
+
+  &__m-articlesPast {
+    width: 100%;
+    margin-top: 8px;
+    overflow: scroll;
+    height: 400px;
+    direction:rtl;
+  }
 }
 
 .o-support {
@@ -202,8 +225,34 @@ html, body {
     text-decoration: none;
     color: var(--color-text);
   }
+}
 
-  .m-sectionTwo {
 
-  }
+// CALENDAR
+
+.react-calendar {
+  width: 100% !important;
+  height: 400px !important;
+}
+
+.react-calendar button {
+  height: 60px;
+}
+
+.react-calendar {
+  background: var(--color-background) !important;
+}
+
+.react-calendar__tile--now,
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: var(--color-primaryAccent) !important;
+}
+
+.react-calendar__tile--active,
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: var(--color-primaryAccent) !important;
+  opacity: 0.5;
+  color: #3A4248;
 }

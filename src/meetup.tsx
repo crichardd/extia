@@ -1,31 +1,54 @@
 import "./css/meetup.scss"
 import "./css/global.scss"
-import {useState, useEffect} from "react";
-
+import React, {useState, useEffect} from "react";
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css';
+//import '';
 
 interface MissionData {
-    title: string;
-    startDate: string;
-    skill: String[]
+    title: String;
+    date: Date;
+    tag: String
+    description: String
+    img_url : String
 
 }
 
+interface Adresse {
+    street: string
+    house: string
+    city: string
+}
+
+
 const Meetup : React.FC = () => {
 
-    const [meetup, setMeetup] = useState<MissionData[]>([]);
+    const [meetupnext, setMeetupNext] = useState<MissionData[]>([]);    const [meetup, setMeetup] = useState<MissionData[]>([]);
+    const [meetuppast, setMeetupPast] = useState<MissionData[]>([]);
+
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://63.33.61.128:3000/api/mission/all');
+            const response = await fetch('http://63.33.61.128:3000/api/meet/all');
             const data = await response.json();
-            setMeetup(data);
+            /*Get futures meet*/
+            //data.sort(Date.parse(data.date))
+            let lenght = data.length;
+            setMeetupPast(data.slice(0, lenght/2))
+            setMeetupNext(data.slice(lenght/2, lenght));
+            /*Get past meet*/
         };
         fetchData();
     }, []);
 
     return (
         <>
-            <img src={"missionsTitle.svg"} alt={"Liste des missions"} className={"m-titleMission"}/>
+            <section>
+                <div style={{width: "40%"}} className={"meetup-title"}>
+                    <p style={{ fontSize: 128, color: '#3A4248', opacity: 0.2, marginTop: '10px', marginLeft: '90px', position: 'absolute' }}>COMET</p>
+                    <p className="color_text" style={{ fontSize: 50, paddingTop: '57px',marginRight: "30%", position: 'relative' }}>Liste des <span style={{color : "#FC8855"}}>COMET</span></p>
+                </div>
+            </section>
             <main className={"o-main"}>
                 <section className={"o-main__m-sectionOne"}>
                     <h2 className={"o-main__m-titleh2"}><span>COMET</span> à venir</h2>
@@ -36,10 +59,36 @@ const Meetup : React.FC = () => {
                         </nav>
                         <button className={'o-main__m-buttonAdd'}><img src={"add.svg"} alt={"Add"}/></button>
                     </div>
-                    {/*TODO: Font not working*/}
                     <div className={"o-main__m-articles"}>
                         {
-                            meetup.map((meet) => {
+                            meetupnext.map((meet) => {
+                                return (
+                                    <div className={"o-main__m-comet"}>
+                                        <nav className={"o-main__m-comet--a-containerType"}>
+                                            <h3 className={"o-main__m-comet--a-textComet"}>{meet.title}</h3>
+                                            <nav className={"o-main__m-comet--a-participants"}>
+                                                <a href={"/support-comet"} className={"o-main__m-comet--a-icon o-main__m-comet--a-video"}><img src={"video.png"}/></a>
+                                                <p>118</p>
+                                                <button className={"o-main__m-comet--a-icon"}><img src={"cloche.svg"} alt={"Alert"}/></button>
+                                            </nav>
+                                        </nav>
+                                        <nav className={"o-main__m-comet--m-containerName"}>
+                                            <p>Foxart</p>
+                                            <nav className={"o-main__m-comet--a-tag"}>{meet.tag}</nav>
+                                        </nav>
+                                        <p className={"o-main__m-comet--a-city"}>Paris - 20/08/2023</p>
+                                        <p className={"o-main__m-comet--a-desc"}>{meet.description}</p>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                </section>
+                <section className={"o-main__m-sectionTwo"}>
+                    <Calendar/>
+                    <div className={"o-main__m-articlesPast"}>
+                        {
+                            meetuppast.map((meet) => {
                                 return (
                                     <div className={"o-main__m-comet"}>
                                         <nav className={"o-main__m-comet--a-containerType"}>
@@ -62,9 +111,6 @@ const Meetup : React.FC = () => {
                             })
                         }
                     </div>
-                </section>
-                <section className={"o-main__m-sectionTwo"}>
-
                 </section>
             </main>
         </>

@@ -3,7 +3,8 @@
   --color-primaryAccent: #FC8855;
   --color-text: #3A4248;
   --color-container: #F6F6F6;
-  --font-family-main: "Gotham Rounded";
+  --font-family-main: "GothamRounded";
+  --lineHeight: 2;
   --font-family-accent: "Oswald";
   --font-size-XXL: 128px;
   --font-size-XL: 50px;
@@ -13,36 +14,6 @@
   --font-size-XS: 11px;
   --font-size-XXS: 9px ;
 }
-
-
-
-// FONTS
-@font-face {
-  font-family: "Gotham Rounded";
-  src: url("../fonts/GothamRounded-Book.otf") format("otf");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Gotham Rounded";
-  src: url("../fonts/GothamRounded-Bold.otf") format("otf");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: "Gotham Rounded";
-  src: url("../fonts/GothamRoundedMedium_21022.ttf") format("ttf");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Oswald";
-  src: url("../fonts/Oswald-VariableFont_wght.ttf") format("ttf");
-}
-
-
-
-
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
